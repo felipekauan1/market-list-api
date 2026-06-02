@@ -25,6 +25,7 @@ class EnsureTokenIsValid
         $response = Http::withToken($token)->get('http://localhost:8000/api/validate-token');
 
         if ($response->successful()) {
+            $request->merge(['user_id' => $response->json('usuario.id')]);
             return $next($request);
         }
 
