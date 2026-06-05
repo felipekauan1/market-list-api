@@ -21,6 +21,6 @@ class Item extends Model
 
     public function list()
     {
-        return $this->belongsTo(ShoppingList::class);
+        return $this->belongsTo(ShoppingList::class, 'list_id');
     }
 }
