@@ -15,7 +15,6 @@ class ItemController extends Controller
             'name' => $request->input('name'),
             'category' => $request->input('category'),
             'quantity' => $request->input('quantity'),
-            'purchased' => $request->input('purchased'),
             'notes' => $request->input('notes'),
         ]);
 
