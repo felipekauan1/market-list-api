@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreListRequest;
 use Illuminate\Http\Request;
 use App\Models\ShoppingList;
 use Illuminate\Http\JsonResponse;
 
 class ShoppingListController extends Controller
 {
-    public function store(Request $request): JsonResponse
+    public function store(StoreListRequest $request): JsonResponse
     {
         $list = ShoppingList::create([
             'user_id' => $request->input('user_id'),

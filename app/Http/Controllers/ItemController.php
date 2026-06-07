@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\UpdateItemRequest;
+use App\Http\Requests\StoreItemRequest;
 use App\Models\ShoppingList;
 use App\Models\Item;
 use Illuminate\Http\JsonResponse;
 
 class ItemController extends Controller
 {
-    public function store(Request $request, ShoppingList $list): JsonResponse
+    public function store(StoreItemRequest $request, ShoppingList $list): JsonResponse
     {
         $item = $list->items()->create([
             'name' => $request->input('name'),
@@ -23,7 +24,7 @@ class ItemController extends Controller
         ], 201);
     }
 
-    public function update(Request $request, ShoppingList $list, Item $item): JsonResponse
+    public function update(UpdateItemRequest $request, ShoppingList $list, Item $item): JsonResponse
     {
         $item->update($request->only(['name', 'category', 'quantity', 'notes']));
 
